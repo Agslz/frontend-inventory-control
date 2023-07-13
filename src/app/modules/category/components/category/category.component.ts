@@ -8,6 +8,7 @@ import {
   MatSnackBarRef,
   SimpleSnackBar,
 } from '@angular/material/snack-bar';
+import { ConfirmComponent } from 'src/app/modules/shared/components/confirm/confirm.component';
 
 @Component({
   selector: 'app-category',
@@ -85,6 +86,25 @@ export class CategoryComponent implements OnInit {
       } else if (result == 2) {
         this.openSnackBar(
           'An error occurred while updating the category',
+          'Error'
+        );
+      }
+    });
+  }
+
+  delete(id: any) {
+    const dialogRef = this.dialog.open(ConfirmComponent, {
+      width: '450px',
+      data: { id: id },
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result == 1) {
+        this.openSnackBar('Category deleted!', 'Successful');
+        this.getCategories();
+      } else if (result == 2) {
+        this.openSnackBar(
+          'An error occurred while deleting the category',
           'Error'
         );
       }
