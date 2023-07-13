@@ -111,6 +111,16 @@ export class CategoryComponent implements OnInit {
     });
   }
 
+  search(term: string) {
+    if (term.length === 0) {
+      return this.getCategories();
+    }
+
+    this.categoryServices.getCategorieById(term).subscribe((resp: any) => {
+      this.processCategoriesResponse(resp);
+    });
+  }
+
   openSnackBar(
     message: string,
     action: string
