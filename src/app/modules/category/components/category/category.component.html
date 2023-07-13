@@ -42,7 +42,7 @@
         <th mat-header *matHeaderCellDef>Actions</th>
         <td mat-cell *matCellDef="let element; let i = index">
           <button mat-icon-button>
-            <mat-icon aria-label="Edit" color="warn">edit</mat-icon>
+            <mat-icon aria-label="Edit" color="warn" (click)="edit(element.id, element.name, element.description)">edit</mat-icon>
           </button>
           <button mat-icon-button>
             <mat-icon aria-label="Delete" color="warn">delete</mat-icon>

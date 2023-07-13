@@ -64,10 +64,33 @@ export class CategoryComponent implements OnInit {
         this.openSnackBar('Category saved!', 'Successful');
         this.getCategories();
       } else if (result == 2) {
-        this.openSnackBar('An error occurred while saving the category', 'Error');
+        this.openSnackBar(
+          'An error occurred while saving the category',
+          'Error'
+        );
       }
     });
   }
+
+  edit(id: number, name: string, description: string) {
+    const dialogRef = this.dialog.open(NewCategoryComponent, {
+      width: '450px',
+      data: { id: id, name: name, description: description },
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result == 1) {
+        this.openSnackBar('Category updated!', 'Successful');
+        this.getCategories();
+      } else if (result == 2) {
+        this.openSnackBar(
+          'An error occurred while updating the category',
+          'Error'
+        );
+      }
+    });
+  }
+
   openSnackBar(
     message: string,
     action: string
