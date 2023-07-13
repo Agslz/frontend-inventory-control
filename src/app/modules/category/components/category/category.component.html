@@ -2,7 +2,7 @@
   <h2 class="align">List of Categories</h2>
   <mat-card-header>
     <div>
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" color="warn">
         <mat-label>Search Categories</mat-label>
         <input matInput #input />
       </mat-form-field>
@@ -12,7 +12,7 @@
     <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
       <ul fxLayout="row" fxLayoutGap="20px">
         <li>
-          <button mat-raised-button color="primary">Add Category</button>
+          <button mat-raised-button color="warn" (click)="openCategoryDialog()">Add Category</button>
         </li>
       </ul>
     </div>
@@ -42,17 +42,17 @@
         <th mat-header *matHeaderCellDef>Actions</th>
         <td mat-cell *matCellDef="let element; let i = index">
           <button mat-icon-button>
-            <mat-icon aria-label="Edit">edit</mat-icon>
+            <mat-icon aria-label="Edit" color="warn">edit</mat-icon>
           </button>
           <button mat-icon-button>
-            <mat-icon aria-label="Delete">delete</mat-icon>
+            <mat-icon aria-label="Delete" color="warn">delete</mat-icon>
           </button>
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
-
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons> </mat-paginator>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+    </mat-paginator>
   </mat-card-content>
 </mat-card>
