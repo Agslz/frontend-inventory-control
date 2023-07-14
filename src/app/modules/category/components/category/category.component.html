@@ -4,7 +4,7 @@
     <div>
       <mat-form-field appearance="fill" color="warn">
         <mat-label>Search Categories</mat-label>
-        <input matInput #input (keyup)="search(input.value)"/>
+        <input matInput #input (keyup)="search(input.value)" />
       </mat-form-field>
     </div>
   </mat-card-header>
@@ -26,22 +26,22 @@
     <table mat-table [dataSource]="dataSource" class="mat-cell">
       <!--Id Column-->
       <ng-container matColumnDef="id">
-        <th mat-header *matHeaderCellDef>N°</th>
+        <th mat-header-cell *matHeaderCellDef>N°</th>
         <td mat-cell *matCellDef="let element">{{ element.id }}</td>
       </ng-container>
       <!--Name Column-->
       <ng-container matColumnDef="name">
-        <th mat-header *matHeaderCellDef>Name</th>
+        <th mat-header-cell *matHeaderCellDef>Name</th>
         <td mat-cell *matCellDef="let element">{{ element.name }}</td>
       </ng-container>
       <!--Description Column-->
       <ng-container matColumnDef="description">
-        <th mat-header *matHeaderCellDef>Description</th>
+        <th mat-header-cell *matHeaderCellDef>Description</th>
         <td mat-cell *matCellDef="let element">{{ element.description }}</td>
       </ng-container>
       <!--Actions-->
       <ng-container matColumnDef="actions">
-        <th mat-header *matHeaderCellDef>Actions</th>
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
         <td mat-cell *matCellDef="let element; let i = index">
           <button mat-icon-button>
             <mat-icon
@@ -62,7 +62,7 @@
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
     </mat-paginator>
