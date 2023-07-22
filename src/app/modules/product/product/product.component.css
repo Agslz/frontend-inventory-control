@@ -19,3 +19,7 @@ mat-form-field {
 .mat-header-cell:nth-child(1) {
   flex: 0 0 6%;
 }
+
+.image{
+    padding-top: 5px;
+}

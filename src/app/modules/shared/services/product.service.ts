@@ -7,48 +7,50 @@ const base_url = environment.base_url;
 @Injectable({
   providedIn: 'root',
 })
-export class CategoryService {
+export class ProductService {
   constructor(private http: HttpClient) {}
 
   /**
-   * Get all categories
-   *
+   * Get all the products
    */
-
-  getCategories() {
-    const endpoint = `${base_url}/categories`;
+  getProducts() {
+    const endpoint = `${base_url}/products`;
     return this.http.get(endpoint);
   }
 
   /**
-   * Save Categories
+   * Save the product
    */
-  saveCategorie(body: any) {
-    const endpoint = `${base_url}/categories`;
+
+  saveProduct(body: any) {
+    const endpoint = `${base_url}/products`;
     return this.http.post(endpoint, body);
   }
 
   /**
-   * Update Categories
+   * Update the product
    */
-  updateCategorie(body: any, id: any) {
-    const endpoint = `${base_url}/categories/ ${id}`;
+
+  updateProduct(body: any, id: any) {
+    const endpoint = `${base_url}/products/${id}`;
     return this.http.put(endpoint, body);
   }
 
   /**
-   * Delete Categories
+   * Delete a product
    */
-  deleteCategorie(id: any) {
-    const endpoint = `${base_url}/categories/ ${id}`;
+
+  deleteProduct(id: any) {
+    const endpoint = `${base_url}/products/${id}`;
     return this.http.delete(endpoint);
   }
 
   /**
-   * Get Category by ID
+   *
+   * Search by name
    */
-  getCategorieById(id: any) {
-    const endpoint = `${base_url}/categories/ ${id}`;
+  getProductByName(name: any) {
+    const endpoint = `${base_url}/products/filter/${name}`;
     return this.http.get(endpoint);
   }
 }
