@@ -1,0 +1,21 @@
+.product-container{
+    display: flex;
+    flex-direction: column;
+}
+
+product-container > * {
+    width: 100%;
+}
+
+.input-file{
+    display: none;
+
+}
+
+.upload{
+    padding: 5px 16px;
+    background: #f44336;
+    color: white;
+    border: 0px solid white;
+}
+
