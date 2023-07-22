@@ -9,6 +9,7 @@ import {
   SimpleSnackBar,
 } from '@angular/material/snack-bar';
 import { NewProductComponent } from '../new-product/new-product.component';
+import { ConfirmComponent } from '../../shared/components/confirm/confirm.component';
 
 @Component({
   selector: 'app-product',
@@ -58,7 +59,7 @@ export class ProductComponent implements OnInit {
       let listCProduct = resp.product.products;
 
       listCProduct.forEach((element: ProductElement) => {
-        element.category = element.category.name;
+        //element.category = element.category.name;
         element.picture = 'data:image/jpeg;base64,' + element.picture;
         dateProduct.push(element);
       });
@@ -94,6 +95,59 @@ export class ProductComponent implements OnInit {
   ): MatSnackBarRef<SimpleSnackBar> {
     return this.snackBar.open(message, action, {
       duration: 2000,
+    });
+  }
+
+  edit(
+    id: number,
+    name: string,
+    price: number,
+    account: number,
+    category: any
+  ) {
+    const dialogRef = this.dialog.open(NewProductComponent, {
+      width: '450px',
+      data: {
+        id: id,
+        name: name,
+        price: price,
+        account: account,
+        category: category,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result == 1) {
+        this.openSnackBar('Product updated!', 'Successful');
+        this.getProducts();
+      } else if (result == 2) {
+        this.openSnackBar(
+          'An error occurred while updating the product',
+          'Error'
+        );
+      }
+    });
+  }
+
+  delete(id: any) {
+    const dialogRef = this.dialog.open(ConfirmComponent, {
+      width: '450px',
+      data: {
+        id: id,
+        module: "product"
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result == 1) {
+        this.openSnackBar('Product deleted!', 'Successful');
+        this.getProducts();
+      } else if (result == 2) {
+        this.openSnackBar(
+          'An error occurred while deleting the product',
+          'Error'
+        );
+      }
     });
   }
 }

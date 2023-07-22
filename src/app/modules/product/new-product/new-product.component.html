@@ -23,7 +23,7 @@
           required
         />
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field color="warn">
         <mat-label>Category</mat-label>
         <mat-select formControlName="category">
           <mat-option *ngFor="let cat of categories" [value]="cat.id">
@@ -33,7 +33,7 @@
       </mat-form-field>
 
       <div >
-        <mat-label> Picture </mat-label>
+        <mat-label>Picture: </mat-label>
         <label class="upload" for="file-upload">Upload Picture</label>
         <input class="input-file" id="file-upload" accept="image/png, image/jpeg, image/png" (change)="onFileChanged($event)" type="file" formControlName="picture"/>
     <span>{{nameImg}}</span>  
