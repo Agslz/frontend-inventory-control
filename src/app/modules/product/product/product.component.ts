@@ -134,7 +134,7 @@ export class ProductComponent implements OnInit {
       width: '450px',
       data: {
         id: id,
-        module: "product"
+        module: 'product',
       },
     });
 
@@ -148,6 +148,15 @@ export class ProductComponent implements OnInit {
           'Error'
         );
       }
+    });
+  }
+
+  search(name: any) {
+    if (name.length === 0) {
+      return this.getProducts();
+    }
+    this.productService.getProductByName(name).subscribe((resp: any) => {
+      this.processProductResponse(resp);
     });
   }
 }

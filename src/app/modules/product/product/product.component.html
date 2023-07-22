@@ -4,7 +4,7 @@
     <div>
       <mat-form-field appearance="fill" color="warn">
         <mat-label>Search Products</mat-label>
-        <input matInput #input/>
+        <input matInput #input (keyup)="search(input.value)"/>
       </mat-form-field>
     </div>
   </mat-card-header>
