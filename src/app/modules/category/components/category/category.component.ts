@@ -10,6 +10,7 @@ import {
 } from '@angular/material/snack-bar';
 import { ConfirmComponent } from 'src/app/modules/shared/components/confirm/confirm.component';
 import { MatPaginator } from '@angular/material/paginator';
+import { UtilService } from 'src/app/modules/shared/services/util.service';
 
 @Component({
   selector: 'app-category',
@@ -17,14 +18,18 @@ import { MatPaginator } from '@angular/material/paginator';
   styleUrls: ['./category.component.css'],
 })
 export class CategoryComponent implements OnInit {
+  isAdmin: any;
+
   constructor(
     private categoryServices: CategoryService,
     public dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private util: UtilService
   ) {}
 
   ngOnInit(): void {
     this.getCategories();
+    this.isAdmin = this.util.isAdmin();
   }
 
   displayedColumns: string[] = ['id', 'name', 'description', 'actions'];
@@ -58,7 +63,6 @@ export class CategoryComponent implements OnInit {
       this.dataSource = new MatTableDataSource<CategoryElement>(dataCategory);
 
       this.dataSource.paginator = this.paginator;
-      
     }
   }
 
@@ -102,7 +106,7 @@ export class CategoryComponent implements OnInit {
   delete(id: any) {
     const dialogRef = this.dialog.open(ConfirmComponent, {
       width: '450px',
-      data: { id: id , module: "category"},
+      data: { id: id, module: 'category' },
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
