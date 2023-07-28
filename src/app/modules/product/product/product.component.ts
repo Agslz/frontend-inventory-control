@@ -10,6 +10,7 @@ import {
 } from '@angular/material/snack-bar';
 import { NewProductComponent } from '../new-product/new-product.component';
 import { ConfirmComponent } from '../../shared/components/confirm/confirm.component';
+import { UtilService } from '../../shared/services/util.service';
 
 @Component({
   selector: 'app-product',
@@ -17,14 +18,17 @@ import { ConfirmComponent } from '../../shared/components/confirm/confirm.compon
   styleUrls: ['./product.component.css'],
 })
 export class ProductComponent implements OnInit {
+  isAdmin: any;
   constructor(
     private productService: ProductService,
     public dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private util: UtilService
   ) {}
 
   ngOnInit(): void {
     this.getProducts();
+    this.isAdmin = this.util.isAdmin();
   }
 
   displayedColumns: string[] = [
@@ -158,6 +162,23 @@ export class ProductComponent implements OnInit {
     this.productService.getProductByName(name).subscribe((resp: any) => {
       this.processProductResponse(resp);
     });
+  }
+
+  exportExcel() {
+    this.productService.exportProducts().subscribe((data: any) => {
+      let file = new Blob([data], {
+        type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+      });
+      let fileUrl = URL.createObjectURL(file);
+      var anchor = document.createElement('a');
+      anchor.download = 'products.xlsx';
+      anchor.href = fileUrl;
+      anchor.click();
+      this.openSnackBar('File exported successfully!', 'Successful');
+    }),
+      (error: any) => {
+        this.openSnackBar('Couldnt export the file', 'Error');
+      };
   }
 }
 
