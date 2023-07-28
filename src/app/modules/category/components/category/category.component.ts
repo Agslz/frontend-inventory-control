@@ -140,6 +140,23 @@ export class CategoryComponent implements OnInit {
       duration: 2000,
     });
   }
+
+  exportExcel() {
+    this.categoryServices.exportCategories().subscribe((data: any) => {
+      let file = new Blob([data], {
+        type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+      });
+      let fileUrl = URL.createObjectURL(file);
+      var anchor = document.createElement('a');
+      anchor.download = 'categories.xlsx';
+      anchor.href = fileUrl;
+      anchor.click();
+      this.openSnackBar('File exported successfully!', 'Successful');
+    }),(error:any)=>{
+      this.openSnackBar('Couldnt export the file', 'Error');
+
+    };
+  }
 }
 
 export interface CategoryElement {
