@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
-const base_url = environment.base_url;
+// const base_url = environment.base_url;
+const base_url = "http://spring-boot-app-409500.rj.r.appspot.com/api/v1"
 
 @Injectable({
   providedIn: 'root',
