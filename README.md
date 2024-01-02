@@ -40,6 +40,9 @@ El frontend de este proyecto está desarrollado en Angular, utilizando la últim
 ![imagen](https://github.com/Agslz/angular-front-inventory/assets/83142033/f8a5f5b2-db86-481f-9056-5b32ed09c1ae)
 
 
+# [Tambien puedes revisar la parte del Backend del proyecto](https://github.com/Agslz/inventory-control-api-rest)
+
+
 
 
 
