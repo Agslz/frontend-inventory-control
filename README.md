@@ -1,5 +1,7 @@
 # Inventory Control - Frontend
 
+Puedes revisar la parte del Backend [aquí](https://github.com/Agslz/inventory-control-api-rest)
+
 ## Características Principales
 
 - **Modularización:** La aplicación está estructurada de manera modular, haciendo uso de componentes, módulos y servicios para garantizar una arquitectura limpia y mantenible.
@@ -8,13 +10,23 @@
 
 - **Chart.js:** Se ha integrado la biblioteca Chart.js para la visualización de datos a través de gráficos interactivos y dinámicos.
 
-## Tecnologías Utilizadas
+## Tecnologías Frontend utilizadas
 
 - Angular (16.0.1)
 - Angular Material
 - Chart.js
 - GitFlow
 - Keycloak
+
+## Tecnologías Backend utilizadas
+
+- Spring Boot 3.1
+- Java 17
+- MySQL
+- Keycloak
+- Docker
+- JUnit
+- Google Cloud Platform
 
 ## Descripción del Proyecto
 
@@ -38,13 +50,3 @@ El frontend de este proyecto está desarrollado en Angular, utilizando la últim
 
 
 ![imagen](https://github.com/Agslz/angular-front-inventory/assets/83142033/f8a5f5b2-db86-481f-9056-5b32ed09c1ae)
-
-
-# [Tambien puedes revisar la parte del Backend del proyecto](https://github.com/Agslz/inventory-control-api-rest)
-
-
-
-
-
-
-
