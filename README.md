@@ -1,6 +1,6 @@
 # Inventory Control - Frontend
 
-Puedes revisar la parte del Backend [aquí](https://github.com/Agslz/backend-item-control/)
+### Puedes revisar la parte del Backend [aquí](https://github.com/Agslz/backend-item-control/)
 
 ## Características Principales
 
